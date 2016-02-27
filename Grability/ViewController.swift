@@ -187,8 +187,10 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 }
             } else {
                 print("Failure : \(error!)")
+                self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
+                        self.collectionView.reloadData()
                         loadingView.removeLoadingOverlay()
                 }
             }
