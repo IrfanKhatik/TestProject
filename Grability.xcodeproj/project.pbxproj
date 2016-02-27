@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D68F6D291C7ECB5900E965A8 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68F6D281C7ECB5900E965A8 /* Parser.swift */; };
+		D6ACA3451C8013BE00D34D49 /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA3441C8013BE00D34D49 /* AppDetailViewController.swift */; };
+		D6ACA3481C801AE500D34D49 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA3471C801AE500D34D49 /* Color.swift */; };
+		D6ACA34A1C801B6600D34D49 /* Image_UrlLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA3491C801B6600D34D49 /* Image_UrlLoading.swift */; };
+		D6ACA34C1C8020DF00D34D49 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA34B1C8020DF00D34D49 /* Utils.swift */; };
+		D6ACA34F1C8046F300D34D49 /* AnimateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA34E1C8046F300D34D49 /* AnimateController.swift */; };
+		D6ACA3511C8062AB00D34D49 /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA3501C8062AB00D34D49 /* DetailImageCell.swift */; };
+		D6ACA3541C80688B00D34D49 /* LoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6ACA3531C80688B00D34D49 /* LoadingOverlayView.swift */; };
+		D6D2C5941C8170E300381E35 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D2C5931C8170E300381E35 /* DatabaseManager.swift */; };
+		D6FC620E1C7DC1AD009D9B7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC620D1C7DC1AD009D9B7E /* AppDelegate.swift */; };
+		D6FC62101C7DC1AD009D9B7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC620F1C7DC1AD009D9B7E /* ViewController.swift */; };
+		D6FC62131C7DC1AD009D9B7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FC62111C7DC1AD009D9B7E /* Main.storyboard */; };
+		D6FC62161C7DC1AD009D9B7E /* Grability.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62141C7DC1AD009D9B7E /* Grability.xcdatamodeld */; };
+		D6FC62181C7DC1AD009D9B7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6FC62171C7DC1AD009D9B7E /* Assets.xcassets */; };
+		D6FC621B1C7DC1AD009D9B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FC62191C7DC1AD009D9B7E /* LaunchScreen.storyboard */; };
+		D6FC62261C7DC1AE009D9B7E /* GrabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62251C7DC1AE009D9B7E /* GrabilityTests.swift */; };
+		D6FC62311C7DC1AE009D9B7E /* GrabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62301C7DC1AE009D9B7E /* GrabilityUITests.swift */; };
+		D6FC62421C7DC697009D9B7E /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62411C7DC697009D9B7E /* PopoverViewController.swift */; };
+		D6FC62441C7DCCF8009D9B7E /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62431C7DCCF8009D9B7E /* ServiceManager.swift */; };
+		D6FC62491C7DD4E3009D9B7E /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62481C7DD4E3009D9B7E /* CategoryType.swift */; };
+		D6FC624C1C7DEDF5009D9B7E /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC624B1C7DEDF5009D9B7E /* MyCollectionViewCell.swift */; };
+		D6FC624F1C7DF05F009D9B7E /* AppDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC624E1C7DF05F009D9B7E /* AppDetail.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D6FC62221C7DC1AE009D9B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FC62021C7DC1AD009D9B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6FC62091C7DC1AD009D9B7E;
+			remoteInfo = Grability;
+		};
+		D6FC622D1C7DC1AE009D9B7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D6FC62021C7DC1AD009D9B7E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6FC62091C7DC1AD009D9B7E;
+			remoteInfo = Grability;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D68F6D281C7ECB5900E965A8 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D6ACA3441C8013BE00D34D49 /* AppDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
+		D6ACA3471C801AE500D34D49 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D6ACA3491C801B6600D34D49 /* Image_UrlLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image_UrlLoading.swift; sourceTree = "<group>"; };
+		D6ACA34B1C8020DF00D34D49 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		D6ACA34E1C8046F300D34D49 /* AnimateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateController.swift; sourceTree = "<group>"; };
+		D6ACA3501C8062AB00D34D49 /* DetailImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
+		D6ACA3531C80688B00D34D49 /* LoadingOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlayView.swift; sourceTree = "<group>"; };
+		D6D2C5931C8170E300381E35 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		D6FC620A1C7DC1AD009D9B7E /* Grability.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grability.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6FC620D1C7DC1AD009D9B7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D6FC620F1C7DC1AD009D9B7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D6FC62121C7DC1AD009D9B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D6FC62151C7DC1AD009D9B7E /* Grability.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Grability.xcdatamodel; sourceTree = "<group>"; };
+		D6FC62171C7DC1AD009D9B7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D6FC621A1C7DC1AD009D9B7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D6FC621C1C7DC1AD009D9B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6FC62211C7DC1AE009D9B7E /* GrabilityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrabilityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6FC62251C7DC1AE009D9B7E /* GrabilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabilityTests.swift; sourceTree = "<group>"; };
+		D6FC62271C7DC1AE009D9B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6FC622C1C7DC1AE009D9B7E /* GrabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6FC62301C7DC1AE009D9B7E /* GrabilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabilityUITests.swift; sourceTree = "<group>"; };
+		D6FC62321C7DC1AE009D9B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6FC62411C7DC697009D9B7E /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		D6FC62431C7DCCF8009D9B7E /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = "Service Handler/ServiceManager.swift"; sourceTree = "<group>"; };
+		D6FC62481C7DD4E3009D9B7E /* CategoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
+		D6FC624B1C7DEDF5009D9B7E /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		D6FC624E1C7DF05F009D9B7E /* AppDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetail.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D6FC62071C7DC1AD009D9B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6FC621E1C7DC1AE009D9B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6FC62291C7DC1AE009D9B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D68F6D271C7ECB0F00E965A8 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				D68F6D281C7ECB5900E965A8 /* Parser.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		D6ACA3461C801ACD00D34D49 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D6ACA3471C801AE500D34D49 /* Color.swift */,
+				D6ACA3491C801B6600D34D49 /* Image_UrlLoading.swift */,
+				D6ACA34B1C8020DF00D34D49 /* Utils.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		D6ACA34D1C8046B700D34D49 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				D6ACA34E1C8046F300D34D49 /* AnimateController.swift */,
+			);
+			name = Animator;
+			sourceTree = "<group>";
+		};
+		D6ACA3521C80686E00D34D49 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				D6ACA3531C80688B00D34D49 /* LoadingOverlayView.swift */,
+			);
+			name = LoadingView;
+			sourceTree = "<group>";
+		};
+		D6D2C5901C81709700381E35 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D6D2C5931C8170E300381E35 /* DatabaseManager.swift */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
+		D6FC62011C7DC1AD009D9B7E = {
+			isa = PBXGroup;
+			children = (
+				D6FC620C1C7DC1AD009D9B7E /* Grability */,
+				D6FC62241C7DC1AE009D9B7E /* GrabilityTests */,
+				D6FC622F1C7DC1AE009D9B7E /* GrabilityUITests */,
+				D6FC620B1C7DC1AD009D9B7E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D6FC620B1C7DC1AD009D9B7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC620A1C7DC1AD009D9B7E /* Grability.app */,
+				D6FC62211C7DC1AE009D9B7E /* GrabilityTests.xctest */,
+				D6FC622C1C7DC1AE009D9B7E /* GrabilityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D6FC620C1C7DC1AD009D9B7E /* Grability */ = {
+			isa = PBXGroup;
+			children = (
+				D6D2C5901C81709700381E35 /* Database */,
+				D6ACA3521C80686E00D34D49 /* LoadingView */,
+				D6ACA34D1C8046B700D34D49 /* Animator */,
+				D6ACA3461C801ACD00D34D49 /* Extension */,
+				D68F6D271C7ECB0F00E965A8 /* Parser */,
+				D6FC624D1C7DF037009D9B7E /* Model */,
+				D6FC624A1C7DEDB0009D9B7E /* Cell */,
+				D6FC62451C7DCF23009D9B7E /* Enum */,
+				D6FC623E1C7DC208009D9B7E /* Service */,
+				D6FC620D1C7DC1AD009D9B7E /* AppDelegate.swift */,
+				D6FC62411C7DC697009D9B7E /* PopoverViewController.swift */,
+				D6FC620F1C7DC1AD009D9B7E /* ViewController.swift */,
+				D6ACA3441C8013BE00D34D49 /* AppDetailViewController.swift */,
+				D6FC62111C7DC1AD009D9B7E /* Main.storyboard */,
+				D6FC62171C7DC1AD009D9B7E /* Assets.xcassets */,
+				D6FC62191C7DC1AD009D9B7E /* LaunchScreen.storyboard */,
+				D6FC621C1C7DC1AD009D9B7E /* Info.plist */,
+				D6FC62141C7DC1AD009D9B7E /* Grability.xcdatamodeld */,
+			);
+			path = Grability;
+			sourceTree = "<group>";
+		};
+		D6FC62241C7DC1AE009D9B7E /* GrabilityTests */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC62251C7DC1AE009D9B7E /* GrabilityTests.swift */,
+				D6FC62271C7DC1AE009D9B7E /* Info.plist */,
+			);
+			path = GrabilityTests;
+			sourceTree = "<group>";
+		};
+		D6FC622F1C7DC1AE009D9B7E /* GrabilityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC62301C7DC1AE009D9B7E /* GrabilityUITests.swift */,
+				D6FC62321C7DC1AE009D9B7E /* Info.plist */,
+			);
+			path = GrabilityUITests;
+			sourceTree = "<group>";
+		};
+		D6FC623E1C7DC208009D9B7E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC62431C7DCCF8009D9B7E /* ServiceManager.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		D6FC62451C7DCF23009D9B7E /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC62481C7DD4E3009D9B7E /* CategoryType.swift */,
+			);
+			name = Enum;
+			sourceTree = "<group>";
+		};
+		D6FC624A1C7DEDB0009D9B7E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC624B1C7DEDF5009D9B7E /* MyCollectionViewCell.swift */,
+				D6ACA3501C8062AB00D34D49 /* DetailImageCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		D6FC624D1C7DF037009D9B7E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D6FC624E1C7DF05F009D9B7E /* AppDetail.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D6FC62091C7DC1AD009D9B7E /* Grability */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6FC62351C7DC1AE009D9B7E /* Build configuration list for PBXNativeTarget "Grability" */;
+			buildPhases = (
+				D6FC62061C7DC1AD009D9B7E /* Sources */,
+				D6FC62071C7DC1AD009D9B7E /* Frameworks */,
+				D6FC62081C7DC1AD009D9B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Grability;
+			productName = Grability;
+			productReference = D6FC620A1C7DC1AD009D9B7E /* Grability.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D6FC62201C7DC1AE009D9B7E /* GrabilityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6FC62381C7DC1AE009D9B7E /* Build configuration list for PBXNativeTarget "GrabilityTests" */;
+			buildPhases = (
+				D6FC621D1C7DC1AE009D9B7E /* Sources */,
+				D6FC621E1C7DC1AE009D9B7E /* Frameworks */,
+				D6FC621F1C7DC1AE009D9B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6FC62231C7DC1AE009D9B7E /* PBXTargetDependency */,
+			);
+			name = GrabilityTests;
+			productName = GrabilityTests;
+			productReference = D6FC62211C7DC1AE009D9B7E /* GrabilityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D6FC622B1C7DC1AE009D9B7E /* GrabilityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6FC623B1C7DC1AE009D9B7E /* Build configuration list for PBXNativeTarget "GrabilityUITests" */;
+			buildPhases = (
+				D6FC62281C7DC1AE009D9B7E /* Sources */,
+				D6FC62291C7DC1AE009D9B7E /* Frameworks */,
+				D6FC622A1C7DC1AE009D9B7E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6FC622E1C7DC1AE009D9B7E /* PBXTargetDependency */,
+			);
+			name = GrabilityUITests;
+			productName = GrabilityUITests;
+			productReference = D6FC622C1C7DC1AE009D9B7E /* GrabilityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D6FC62021C7DC1AD009D9B7E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = BestSoft;
+				TargetAttributes = {
+					D6FC62091C7DC1AD009D9B7E = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					D6FC62201C7DC1AE009D9B7E = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = D6FC62091C7DC1AD009D9B7E;
+					};
+					D6FC622B1C7DC1AE009D9B7E = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = D6FC62091C7DC1AD009D9B7E;
+					};
+				};
+			};
+			buildConfigurationList = D6FC62051C7DC1AD009D9B7E /* Build configuration list for PBXProject "Grability" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D6FC62011C7DC1AD009D9B7E;
+			productRefGroup = D6FC620B1C7DC1AD009D9B7E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D6FC62091C7DC1AD009D9B7E /* Grability */,
+				D6FC62201C7DC1AE009D9B7E /* GrabilityTests */,
+				D6FC622B1C7DC1AE009D9B7E /* GrabilityUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D6FC62081C7DC1AD009D9B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6FC621B1C7DC1AD009D9B7E /* LaunchScreen.storyboard in Resources */,
+				D6FC62181C7DC1AD009D9B7E /* Assets.xcassets in Resources */,
+				D6FC62131C7DC1AD009D9B7E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6FC621F1C7DC1AE009D9B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6FC622A1C7DC1AE009D9B7E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D6FC62061C7DC1AD009D9B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6ACA34A1C801B6600D34D49 /* Image_UrlLoading.swift in Sources */,
+				D6FC62101C7DC1AD009D9B7E /* ViewController.swift in Sources */,
+				D6FC624C1C7DEDF5009D9B7E /* MyCollectionViewCell.swift in Sources */,
+				D6ACA3481C801AE500D34D49 /* Color.swift in Sources */,
+				D6D2C5941C8170E300381E35 /* DatabaseManager.swift in Sources */,
+				D6FC620E1C7DC1AD009D9B7E /* AppDelegate.swift in Sources */,
+				D6ACA34C1C8020DF00D34D49 /* Utils.swift in Sources */,
+				D6FC62421C7DC697009D9B7E /* PopoverViewController.swift in Sources */,
+				D6FC62161C7DC1AD009D9B7E /* Grability.xcdatamodeld in Sources */,
+				D6ACA3511C8062AB00D34D49 /* DetailImageCell.swift in Sources */,
+				D68F6D291C7ECB5900E965A8 /* Parser.swift in Sources */,
+				D6FC62441C7DCCF8009D9B7E /* ServiceManager.swift in Sources */,
+				D6ACA3451C8013BE00D34D49 /* AppDetailViewController.swift in Sources */,
+				D6ACA34F1C8046F300D34D49 /* AnimateController.swift in Sources */,
+				D6FC624F1C7DF05F009D9B7E /* AppDetail.swift in Sources */,
+				D6ACA3541C80688B00D34D49 /* LoadingOverlayView.swift in Sources */,
+				D6FC62491C7DD4E3009D9B7E /* CategoryType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6FC621D1C7DC1AE009D9B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6FC62261C7DC1AE009D9B7E /* GrabilityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6FC62281C7DC1AE009D9B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6FC62311C7DC1AE009D9B7E /* GrabilityUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6FC62231C7DC1AE009D9B7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6FC62091C7DC1AD009D9B7E /* Grability */;
+			targetProxy = D6FC62221C7DC1AE009D9B7E /* PBXContainerItemProxy */;
+		};
+		D6FC622E1C7DC1AE009D9B7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D6FC62091C7DC1AD009D9B7E /* Grability */;
+			targetProxy = D6FC622D1C7DC1AE009D9B7E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D6FC62111C7DC1AD009D9B7E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6FC62121C7DC1AD009D9B7E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D6FC62191C7DC1AD009D9B7E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6FC621A1C7DC1AD009D9B7E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D6FC62331C7DC1AE009D9B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D6FC62341C7DC1AE009D9B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D6FC62361C7DC1AE009D9B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Grability/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BestSoft.Grability;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D6FC62371C7DC1AE009D9B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Grability/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BestSoft.Grability;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D6FC62391C7DC1AE009D9B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GrabilityTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BestSoft.GrabilityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grability.app/Grability";
+			};
+			name = Debug;
+		};
+		D6FC623A1C7DC1AE009D9B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GrabilityTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BestSoft.GrabilityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Grability.app/Grability";
+			};
+			name = Release;
+		};
+		D6FC623C1C7DC1AE009D9B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GrabilityUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BestSoft.GrabilityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Grability;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D6FC623D1C7DC1AE009D9B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GrabilityUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.BestSoft.GrabilityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Grability;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D6FC62051C7DC1AD009D9B7E /* Build configuration list for PBXProject "Grability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6FC62331C7DC1AE009D9B7E /* Debug */,
+				D6FC62341C7DC1AE009D9B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6FC62351C7DC1AE009D9B7E /* Build configuration list for PBXNativeTarget "Grability" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6FC62361C7DC1AE009D9B7E /* Debug */,
+				D6FC62371C7DC1AE009D9B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6FC62381C7DC1AE009D9B7E /* Build configuration list for PBXNativeTarget "GrabilityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6FC62391C7DC1AE009D9B7E /* Debug */,
+				D6FC623A1C7DC1AE009D9B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6FC623B1C7DC1AE009D9B7E /* Build configuration list for PBXNativeTarget "GrabilityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6FC623C1C7DC1AE009D9B7E /* Debug */,
+				D6FC623D1C7DC1AE009D9B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D6FC62141C7DC1AD009D9B7E /* Grability.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D6FC62151C7DC1AD009D9B7E /* Grability.xcdatamodel */,
+			);
+			currentVersion = D6FC62151C7DC1AD009D9B7E /* Grability.xcdatamodel */;
+			path = Grability.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D6FC62021C7DC1AD009D9B7E /* Project object */;
+}
