@@ -99,7 +99,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     // MARK: Popover presentation protocol
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+        return .None
     }
     
     // MARK: CollectionView protocols
@@ -154,7 +154,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     // MARK: My Custom protocol
     func updateForCategory(category:CategoryType) {
-        self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
+        self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(category)
         self.collectionView.reloadData()
                 
         let loadingView : LoadingOverlayView = LoadingOverlayView(superview: self.view)

@@ -14,9 +14,8 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     var selectedApp: AppDetail!
     
     @IBOutlet private weak var tblAppDetail: UITableView!
-    let screenSize = Utils.screenSize()
-    let isIpad = Utils.runningDeviceIsIpad()
-    
+    private let screenSize = Utils.screenSize()
+    private let isIpad = Utils.runningDeviceIsIpad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,8 +87,15 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         actionSheetController.addAction(facebookAction)
         
         //Present the AlertController
-        self.presentViewController(actionSheetController, animated: true, completion: nil)
-        
+        if isIpad == true {
+            actionSheetController.modalPresentationStyle = .Popover
+            let popPresenter = actionSheetController.popoverPresentationController
+            popPresenter?.sourceView = sender;
+            popPresenter?.sourceRect = sender.bounds
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        } else {
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }
     }
     
     // MARK: TableView Protocols
@@ -109,12 +115,12 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         headerView.backgroundColor = UIColor.greenValidationColor()
         
         let backButton = UIButton(type:UIButtonType.Custom)
-        backButton.frame = CGRectMake(10, 25, 40, isIpad ? 60 : 40)
+        backButton.frame = CGRectMake(10, 15 ,isIpad ? 60 : 40, isIpad ? 60 : 40)
         backButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)
         backButton.setImage(UIImage(named: "Close"), forState: UIControlState.Normal)
         headerView.addSubview(backButton)
         
-        let lblTitle = UILabel(frame: CGRectMake(70, 20,screenSize.width-140, isIpad ? 60 : 40))
+        let lblTitle = UILabel(frame: CGRectMake(70, 10,screenSize.width-140, isIpad ? 60 : 40))
         lblTitle.text = selectedApp.appName
         lblTitle.textColor = UIColor.whiteColor()
         lblTitle.numberOfLines = 0
