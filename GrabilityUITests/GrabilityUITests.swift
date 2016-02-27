@@ -2,7 +2,7 @@
 //  GrabilityUITests.swift
 //  GrabilityUITests
 //
-//  Created by Netstratum on 2/24/16.
+//  Created by Irfan Khatik on 2/24/16.
 //  Copyright © 2016 BestSoft. All rights reserved.
 //
 
