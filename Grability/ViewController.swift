@@ -44,8 +44,10 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 }
             } else {
                 print("Failure : \(error!)")
+                self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
+                        self.collectionView.reloadData()
                         loadingView.removeLoadingOverlay()
                 }
             }
@@ -142,7 +144,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
             return cell
         }
         
-        cell.imageView?.downloadedFrom(link: checkedUrl, contentMode: .ScaleAspectFit)
+        cell.imageView?.downloadedFrom(link: checkedUrl, appId: appDetail.appId, categoryId: appDetail.appCategoryId, contentMode: .ScaleAspectFit)
         
         return cell
     }

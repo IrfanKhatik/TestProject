@@ -20,19 +20,19 @@ public class DatabaseManager: NSObject {
     
     // MARK: - Core Data stack
     
-    lazy var applicationDocumentsDirectory: NSURL = {
+    private lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.BestSoft.Grability" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
     
-    lazy var managedObjectModel: NSManagedObjectModel = {
+    private lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("Grability", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
@@ -57,7 +57,7 @@ public class DatabaseManager: NSObject {
         return coordinator
     }()
     
-    lazy var managedObjectContext: NSManagedObjectContext = {
+    private lazy var managedObjectContext: NSManagedObjectContext = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
@@ -77,6 +77,113 @@ public class DatabaseManager: NSObject {
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
+            }
+        }
+    }
+    
+    // MARK: - 
+    func fetchAppDetailsForCategory(category:CategoryType) -> Array<AppDetail>?
+    {
+        let managedContext = self.managedObjectContext
+        let fetchRequest   = NSFetchRequest(entityName: "AppDetail")
+
+        var appList = [AppDetail]()
+        do{
+            let fetchedResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            
+            if let results = fetchedResult{
+                for appObject in results{
+                    if let appCategory = appObject.valueForKey("category") as? String where appCategory == category.rawValue{
+                        
+                        let appID           = appObject.valueForKey("appID") as? String
+                        let appArtist       = appObject.valueForKey("artist") as? String
+                        let appArtistUrl    = appObject.valueForKey("artistUrl") as? String
+                        let appCategoryID   = appObject.valueForKey("categoryID") as? String
+                        let appImage        = appObject.valueForKey("image") as? String
+                        let appLink         = appObject.valueForKey("link") as? String
+                        let appName         = appObject.valueForKey("name") as? String
+                        let appRealeaseDate = appObject.valueForKey("releaseDate") as? String
+                        let appRights       = appObject.valueForKey("rights") as? String
+                        let appSummary      = appObject.valueForKey("summary") as? String
+                        let anEnumCat = CategoryType(rawValue: appCategory)!
+                        
+                        let appDetail = AppDetail(appName: appName, appImage: appImage, appSummary: appSummary, appRights: appRights, appLink: appLink, appId: appID, appArtist: appArtist, appArtistURL: appArtistUrl, appCategoryId: appCategoryID, appReleaseDate: appRealeaseDate, appCategory: anEnumCat)
+                        
+                        appList.append(appDetail)
+                    }
+                }
+            } else {
+                print("Could not fetch result")
+            }
+            return appList
+        }catch{
+            print("There is some error.")
+            return appList
+        }
+    }
+    
+    func saveAppDetails(appList: Array<AppDetail>, forCategory: CategoryType){
+        
+        let managedContext = self.managedObjectContext
+        
+        let fetchRequest   = NSFetchRequest(entityName: "AppDetail")
+        
+        //Remove all apps for category
+        do{
+            let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            
+            if let theResult = fetchResult
+            {
+                for existApp in theResult{
+                    if let category = existApp.valueForKey("category") as? String where category == forCategory.rawValue{
+                        self.managedObjectContext.deleteObject(existApp)
+                        let appId = existApp.valueForKey("appID") as? String
+                        let catId = existApp.valueForKey("categoryID") as? String
+                        self.removeExistImage(appId!, categoryId: catId!)
+                    }
+                }
+            }
+        } catch let error as NSError{
+            print("Some error in fetching queries.:\(error.localizedDescription)")
+        }
+        
+        //Insert new apps for Category
+        for appDetail in appList {
+            let newObject: NSManagedObject = NSEntityDescription.insertNewObjectForEntityForName("AppDetail", inManagedObjectContext: self.managedObjectContext)
+            newObject.setValue(appDetail.appId, forKey:"appID")
+            newObject.setValue(appDetail.appArtist, forKey: "artist")
+            newObject.setValue(appDetail.appArtistURL, forKey: "artistUrl")
+            newObject.setValue(appDetail.appCategory.rawValue, forKey: "category")
+            newObject.setValue(appDetail.appCategoryId, forKey: "categoryID")
+            newObject.setValue(appDetail.appImage, forKey: "image")
+            
+            newObject.setValue(appDetail.appLink, forKey: "link")
+            newObject.setValue(appDetail.appName, forKey: "name")
+            newObject.setValue(appDetail.appReleaseDate, forKey: "releaseDate")
+            newObject.setValue(appDetail.appRights, forKey: "rights")
+            newObject.setValue(appDetail.appSummary, forKey: "summary")
+        }
+        
+        //Save context
+        do{
+            try self.managedObjectContext.save()
+        }catch let error as NSError{
+            print("AppDetail save/update error: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    private func removeExistImage(appId: String, categoryId: String){
+        let format = ".png"
+        let tmpPath = NSTemporaryDirectory() + categoryId + appId + format
+        let fileManager = NSFileManager.defaultManager()
+        if fileManager.fileExistsAtPath(tmpPath)
+        {
+            do{
+                try fileManager.removeItemAtPath(tmpPath)
+            }catch let error as NSError
+            {
+                print("File remove error: \(error.localizedDescription)")
             }
         }
     }

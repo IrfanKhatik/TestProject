@@ -181,7 +181,8 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             cell.appIcon.image = UIImage(named: "TempImage")
             return cell
         }
-        cell.appIcon.downloadedFrom(link: checkedUrl, contentMode: .ScaleAspectFit)
+        
+        cell.appIcon.downloadedFrom(link: checkedUrl, appId: selectedApp.appId, categoryId: selectedApp.appCategoryId, contentMode: .ScaleAspectFit)
         
         return cell
     }

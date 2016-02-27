@@ -50,6 +50,9 @@ class Parser: NSObject {
             
             resultArray.append(appDetail)
         }
+        
+        DatabaseManager.sharedInstance.saveAppDetails(resultArray, forCategory: appCategory)
+        
         withCompletion(resultArray, nil)
     }
 }

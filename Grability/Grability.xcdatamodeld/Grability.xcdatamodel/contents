@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
-    <entity name="Entity" syncable="YES">
+    <entity name="AppDetail" syncable="YES">
         <attribute name="appID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artistUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +14,6 @@
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="AppDetail" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>
