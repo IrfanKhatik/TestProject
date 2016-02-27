@@ -14,6 +14,9 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     var selectedApp: AppDetail!
     
     @IBOutlet private weak var tblAppDetail: UITableView!
+    let screenSize = Utils.screenSize()
+    let isIpad = Utils.runningDeviceIsIpad()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,22 +105,23 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let screenSize:CGSize = Utils.screenSize()
         
-        let headerView = UIView(frame:CGRectMake(0, 0, screenSize.width, CGFloat(70.0)))
+        let headerView = UIView(frame:CGRectMake(0, 0, screenSize.width, isIpad ? CGFloat(90.0) : CGFloat(70.0)))
         headerView.backgroundColor = UIColor.greenValidationColor()
         
         let backButton = UIButton(type:UIButtonType.Custom)
-        backButton.frame = CGRectMake(10, 25, 40, 40)
+        backButton.frame = CGRectMake(10, 25, 40, isIpad ? 60 : 40)
         backButton.addTarget(self, action: "goBack", forControlEvents: UIControlEvents.TouchUpInside)
         backButton.setImage(UIImage(named: "Close"), forState: UIControlState.Normal)
         headerView.addSubview(backButton)
         
-        let lblTitle = UILabel(frame: CGRectMake(70, 25,screenSize.width-140, 40))
+        let lblTitle = UILabel(frame: CGRectMake(70, 20,screenSize.width-140, isIpad ? 60 : 40))
         lblTitle.text = selectedApp.appName
         lblTitle.textColor = UIColor.whiteColor()
         lblTitle.numberOfLines = 0
         lblTitle.textAlignment = NSTextAlignment.Center
         lblTitle.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        lblTitle.font = Utils.myFont(CGFloat(18.0))
+        lblTitle.font = isIpad ? Utils.myFont(CGFloat(22.0)) : Utils.myFont(CGFloat(18.0))
+        
         headerView.addSubview(lblTitle)
         
         return headerView
@@ -126,9 +130,9 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row{
         case 0:
-            return CGFloat(150.0)
+            return isIpad ? CGFloat(250.0) : CGFloat(150.0)
         default:
-            return CGFloat(44.0)
+            return isIpad ? CGFloat(60.0) :CGFloat(44.0)
         }
     }
     
@@ -140,7 +144,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         
         switch indexPath.row{
         case 0:
-            return imageCell()
+            return imageCell(indexPath)
         case 1:
             let cell = defaultCell()
             cell.textLabel?.text = selectedApp.appSummary
@@ -174,8 +178,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    private func imageCell() -> DetailImageCell {
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+    private func imageCell(indexPath: NSIndexPath) -> DetailImageCell {
         let cell : DetailImageCell = self.tblAppDetail.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath) as! DetailImageCell
         guard let checkedUrl = NSURL(string: selectedApp.appImage) else {
             cell.appIcon.image = UIImage(named: "TempImage")
@@ -191,7 +194,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         let cell : UITableViewCell = self.tblAppDetail.dequeueReusableCellWithIdentifier("normalCell")!
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        cell.textLabel?.font = Utils.myFont(15)
+        cell.textLabel?.font = isIpad ? Utils.myFont(CGFloat(18.0)) : Utils.myFont(CGFloat(16.0))
         
         return cell
     }
@@ -200,6 +203,9 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         let cell : UITableViewCell = self.tblAppDetail.dequeueReusableCellWithIdentifier("TitleCell")!
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        
+        cell.textLabel?.font = isIpad ? Utils.myFont(CGFloat(18.0)) : Utils.myFont(CGFloat(16.0))
+        cell.detailTextLabel?.font = isIpad ? Utils.myFont(CGFloat(14.0)) : Utils.myFont(CGFloat(13.0))
         
         return cell
     }

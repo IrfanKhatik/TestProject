@@ -108,7 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="188" sectionHeaderHeight="40" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="S6W-WT-I8h">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="188" sectionHeaderHeight="40" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="S6W-WT-I8h">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -122,6 +122,9 @@
                                                 <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-Ck-ioq">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="800" height="0.0"/>
+                                                    </variation>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJ9-Yk-6Cu">
                                                     <rect key="frame" x="525" y="115" width="70" height="30"/>
@@ -131,29 +134,69 @@
                                                         <constraint firstAttribute="height" constant="30" id="aR8-ni-RhD"/>
                                                     </constraints>
                                                     <state key="normal" title="Share"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                        <rect key="frame" x="725" y="-35" width="70" height="30"/>
+                                                    </variation>
                                                     <connections>
                                                         <action selector="showAppMenu:" destination="e1R-ah-Ti4" eventType="touchUpInside" id="26J-6k-vOu"/>
                                                     </connections>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-XW-zCF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-XW-zCF">
                                                     <rect key="frame" x="250" y="25" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="0aL-3Z-4Hh"/>
-                                                        <constraint firstAttribute="height" constant="100" id="jol-0d-x1g"/>
+                                                        <constraint firstAttribute="height" constant="200" id="bwm-zi-yf3"/>
+                                                        <constraint firstAttribute="width" constant="100" id="lhe-Bu-WCB"/>
+                                                        <constraint firstAttribute="width" constant="200" id="m62-1K-aDp"/>
+                                                        <constraint firstAttribute="height" constant="100" id="tPt-9B-KQa"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="bwm-zi-yf3"/>
+                                                            <exclude reference="lhe-Bu-WCB"/>
+                                                            <exclude reference="m62-1K-aDp"/>
+                                                            <exclude reference="tPt-9B-KQa"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="lhe-Bu-WCB"/>
+                                                            <include reference="tPt-9B-KQa"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                        <rect key="frame" x="300" y="25" width="200" height="200"/>
+                                                        <mask key="constraints">
+                                                            <include reference="bwm-zi-yf3"/>
+                                                            <include reference="m62-1K-aDp"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="J9V-XW-zCF" firstAttribute="centerX" secondItem="6tB-9s-LbQ" secondAttribute="centerX" id="7Eg-8y-ZGD"/>
                                                 <constraint firstItem="J9V-XW-zCF" firstAttribute="top" secondItem="6tB-9s-LbQ" secondAttribute="top" constant="25" id="A2j-rt-DQI"/>
                                                 <constraint firstAttribute="bottom" secondItem="pJ9-Yk-6Cu" secondAttribute="bottom" constant="5" id="Cse-1X-bCM"/>
                                                 <constraint firstAttribute="bottom" secondItem="J9V-XW-zCF" secondAttribute="bottom" constant="25" id="RC3-zV-60B"/>
                                                 <constraint firstAttribute="bottom" secondItem="PTu-Ck-ioq" secondAttribute="bottom" id="Zjc-Dk-XOU"/>
-                                                <constraint firstItem="J9V-XW-zCF" firstAttribute="centerX" secondItem="6tB-9s-LbQ" secondAttribute="centerX" id="gkG-M2-M88"/>
+                                                <constraint firstItem="PTu-Ck-ioq" firstAttribute="top" secondItem="pJ9-Yk-6Cu" secondAttribute="bottom" constant="5" id="hUP-j9-R7X"/>
                                                 <constraint firstItem="PTu-Ck-ioq" firstAttribute="leading" secondItem="6tB-9s-LbQ" secondAttribute="leading" id="lH2-Me-LmV"/>
                                                 <constraint firstAttribute="trailing" secondItem="pJ9-Yk-6Cu" secondAttribute="trailing" constant="5" id="lfc-6w-2Zz"/>
+                                                <constraint firstItem="J9V-XW-zCF" firstAttribute="top" secondItem="PTu-Ck-ioq" secondAttribute="bottom" constant="25" id="mLe-KR-CyK"/>
                                                 <constraint firstItem="PTu-Ck-ioq" firstAttribute="top" secondItem="6tB-9s-LbQ" secondAttribute="top" id="rQI-jL-ges"/>
                                                 <constraint firstAttribute="trailing" secondItem="PTu-Ck-ioq" secondAttribute="trailing" id="t4e-Fa-coU"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="hUP-j9-R7X"/>
+                                                    <exclude reference="mLe-KR-CyK"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=regular">
+                                                <mask key="constraints">
+                                                    <include reference="hUP-j9-R7X"/>
+                                                    <include reference="mLe-KR-CyK"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="appIcon" destination="J9V-XW-zCF" id="ukU-Jf-Tu4"/>

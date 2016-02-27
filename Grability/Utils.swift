@@ -9,11 +9,20 @@
 import UIKit
 
 class Utils {
-    static func screenSize() -> CGSize {
+    class func screenSize() -> CGSize {
         return UIScreen.mainScreen().bounds.size
     }
     
-    static func myFont(size : CGFloat ) -> UIFont? {
+    class func myFont(size : CGFloat ) -> UIFont? {
         return UIFont(name:"Chalkboard SE", size:size)
+    }
+    
+    class func runningDeviceIsIpad() -> Bool {
+        switch UIDevice.currentDevice().userInterfaceIdiom{
+        case .Pad:
+            return true
+        default:
+            return false
+        }
     }
 }

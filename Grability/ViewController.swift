@@ -12,7 +12,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     @IBOutlet private weak var collectionView: UICollectionView!
     private var popoverViewController: PopoverViewController?
-    private var detailViewController: AppDetailViewController?
     
     private var selectedApp : AppDetail!
     
@@ -26,16 +25,22 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     private var appList : [AppDetail]?
     
+    private let isIpad = Utils.runningDeviceIsIpad()
+    private let screenSize:CGSize = Utils.screenSize()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //self.collectionView.registerClass(MyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.navigationItem.title = "iTunes Store: Top Free Apps"
+        
+        self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
+        self.collectionView.reloadData()
+        
         let loadingView : LoadingOverlayView = LoadingOverlayView(superview: self.view)
         
         ServiceManager.sharedInstance.data_request(CategoryType.None) { (apps, error) -> Void in
             if apps != nil {
-                print("Success : \(apps!.count)")
                 self.appList = apps
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
@@ -44,10 +49,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 }
             } else {
                 print("Failure : \(error!)")
-                self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
-                        self.collectionView.reloadData()
                         loadingView.removeLoadingOverlay()
                 }
             }
@@ -66,16 +69,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
             return
         }
         
-        let screenSize:CGSize = Utils.screenSize()
-        
-        switch UIDevice.currentDevice().userInterfaceIdiom{
-        case .Pad:
-            flowLayout.itemSize = CGSizeMake(screenSize.width/4.2, (screenSize.width/4.5)+60)
-        case .Phone:
-            flowLayout.itemSize = CGSizeMake(screenSize.width/3.5, (screenSize.width/3.3)+37)
-        default:
-            flowLayout.itemSize = CGSizeMake(screenSize.width/3.5, (screenSize.width/3.3)+37)
-        }
+        flowLayout.itemSize = isIpad ? CGSizeMake(screenSize.width/4.2, (screenSize.width/4.5)+60) : CGSizeMake(screenSize.width/3.5, (screenSize.width/3.3)+37)
         
         flowLayout.invalidateLayout()
     }
@@ -95,17 +89,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         }
         
         if segue.identifier == detailSegueIdentifier {
-            detailViewController = (segue.destinationViewController as! AppDetailViewController)
-            detailViewController?.transitioningDelegate = self;
-            detailViewController!.selectedApp = selectedApp
+            
+            let detailViewController = segue.destinationViewController as! AppDetailViewController
+            detailViewController.transitioningDelegate = self;
+            detailViewController.selectedApp = selectedApp
         }
-    }
-    
-    func rotated()
-    {
-        let screenSize:CGSize = Utils.screenSize()
-        print("ScreenSize: \(screenSize)")
-        self.view.frame = CGRectMake(0, 0, screenSize.width, screenSize.height)
     }
     
     // MARK: Popover presentation protocol
@@ -139,6 +127,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         }
         
         cell.label?.text = appDetail.appName
+        cell.label.font = isIpad ? Utils.myFont(17) : Utils.myFont(14)
         
         guard let checkedUrl = NSURL(string: appDetail.appImage) else {
             return cell
@@ -160,25 +149,17 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let screenSize:CGSize = Utils.screenSize()
-        
-        switch UIDevice.currentDevice().userInterfaceIdiom{
-        case .Pad:
-                return CGSizeMake(screenSize.width/4.2, (screenSize.width/4.5)+60)
-        case .Phone:
-                return CGSizeMake(screenSize.width/3.5, (screenSize.width/3.3)+37)
-        default:
-            return CGSizeMake(screenSize.width/3.5, (screenSize.width/3.3)+37)
-        }
+        return isIpad ? CGSizeMake(screenSize.width/4.2, (screenSize.width/4.5)+60) : CGSizeMake(screenSize.width/3.5, (screenSize.width/3.3)+37)
     }
     
     // MARK: My Custom protocol
     func updateForCategory(category:CategoryType) {
-        print("Hello delegate: \(category)")
+        self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
+        self.collectionView.reloadData()
+                
         let loadingView : LoadingOverlayView = LoadingOverlayView(superview: self.view)
         ServiceManager.sharedInstance.data_request(category) { (apps, error) -> Void in
             if apps != nil {
-                print("Success : \(apps!.count)")
                 self.appList = apps
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
@@ -186,11 +167,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                         loadingView.removeLoadingOverlay()
                 }
             } else {
-                print("Failure : \(error!)")
-                self.appList = DatabaseManager.sharedInstance.fetchAppDetailsForCategory(CategoryType.None)
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
-                        self.collectionView.reloadData()
                         loadingView.removeLoadingOverlay()
                 }
             }
