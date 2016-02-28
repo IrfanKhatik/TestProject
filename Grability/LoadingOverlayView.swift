@@ -37,7 +37,7 @@ public class LoadingOverlayView: UIView {
     
     private func setupLoadingOverlay() {
         backgroundColor = UIColor(white: 0, alpha: 0.7)
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .White)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle:.WhiteLarge)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(indicator)
         

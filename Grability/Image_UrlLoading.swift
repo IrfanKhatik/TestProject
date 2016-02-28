@@ -14,7 +14,6 @@ extension UIImageView {
         let format = ".png"
         
         let tmpPath = NSTemporaryDirectory() + categoryID + appID + format
-        print("filePath: \(tmpPath)")
         
         let fileManager = NSFileManager.defaultManager()
         if fileManager.fileExistsAtPath(tmpPath)

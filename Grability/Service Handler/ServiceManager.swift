@@ -41,8 +41,6 @@ public class ServiceManager: NSURLSession {
         } else {
             urlString! += "json"
         }
-
-        print( urlString! )
         
         let url:NSURL = NSURL(string: urlString!)!
         let session = NSURLSession.sharedSession()

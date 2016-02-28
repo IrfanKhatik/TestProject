@@ -186,6 +186,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     
     private func imageCell(indexPath: NSIndexPath) -> DetailImageCell {
         let cell : DetailImageCell = self.tblAppDetail.dequeueReusableCellWithIdentifier("detailCell", forIndexPath: indexPath) as! DetailImageCell
+        cell.selectionStyle = .None
         guard let checkedUrl = NSURL(string: selectedApp.appImage) else {
             cell.appIcon.image = UIImage(named: "TempImage")
             return cell
@@ -199,8 +200,9 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     private func defaultCell() -> UITableViewCell {
         let cell : UITableViewCell = self.tblAppDetail.dequeueReusableCellWithIdentifier("normalCell")!
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell.textLabel?.lineBreakMode = .ByWordWrapping
         cell.textLabel?.font = isIpad ? Utils.myFont(CGFloat(18.0)) : Utils.myFont(CGFloat(16.0))
+        cell.selectionStyle = .None
         
         return cell
     }
@@ -208,12 +210,25 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     private func titleCell() -> UITableViewCell {
         let cell : UITableViewCell = self.tblAppDetail.dequeueReusableCellWithIdentifier("TitleCell")!
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        
+        cell.textLabel?.lineBreakMode = .ByWordWrapping
         cell.textLabel?.font = isIpad ? Utils.myFont(CGFloat(18.0)) : Utils.myFont(CGFloat(16.0))
         cell.detailTextLabel?.font = isIpad ? Utils.myFont(CGFloat(14.0)) : Utils.myFont(CGFloat(13.0))
+        cell.selectionStyle = .None
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 2 {
+            self.openAppArtistLink()
+        }
+    }
+    
+    func openAppArtistLink(){
+        guard let checkedUrl = NSURL(string: selectedApp.appArtistURL) else {
+            return
+        }
+        UIApplication.sharedApplication().openURL(checkedUrl)
     }
 }
 

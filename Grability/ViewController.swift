@@ -52,6 +52,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
                         loadingView.removeLoadingOverlay()
+                        self.displayError(error!)
                 }
             }
         }
@@ -96,6 +97,20 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         }
     }
     
+    // MARK: Display Error
+    private func displayError(error: NSError) {
+        
+        let alert = UIAlertController(title: "Grability",
+                                    message: error.localizedDescription,
+                             preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .Cancel) { (alert: UIAlertAction) in
+        }
+        alert.addAction(okAction)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // MARK: Popover presentation protocol
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -127,7 +142,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         }
         
         cell.label?.text = appDetail.appName
-        cell.label.font = isIpad ? Utils.myFont(17) : Utils.myFont(14)
+        cell.label.font = isIpad ? Utils.myFont(CGFloat(20.0)) : Utils.myFont(CGFloat(15.0))
         
         guard let checkedUrl = NSURL(string: appDetail.appImage) else {
             return cell
@@ -170,6 +185,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 dispatch_async(dispatch_get_main_queue())
                     { () -> Void in
                         loadingView.removeLoadingOverlay()
+                        self.displayError(error!)
                 }
             }
         }
