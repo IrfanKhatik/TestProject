@@ -60,8 +60,6 @@ public class ServiceManager: NSURLSession {
                     return
                 }
             
-                data! = NSData()
-            
                 do {
                     guard let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject] else {
                         throw ParseError.Dirty
