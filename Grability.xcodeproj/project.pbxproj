@@ -24,11 +24,12 @@
 		D6FC621B1C7DC1AD009D9B7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FC62191C7DC1AD009D9B7E /* LaunchScreen.storyboard */; };
 		D6FC62261C7DC1AE009D9B7E /* GrabilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62251C7DC1AE009D9B7E /* GrabilityTests.swift */; };
 		D6FC62311C7DC1AE009D9B7E /* GrabilityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62301C7DC1AE009D9B7E /* GrabilityUITests.swift */; };
-		D6FC62421C7DC697009D9B7E /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62411C7DC697009D9B7E /* PopoverViewController.swift */; };
 		D6FC62441C7DCCF8009D9B7E /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62431C7DCCF8009D9B7E /* ServiceManager.swift */; };
 		D6FC62491C7DD4E3009D9B7E /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC62481C7DD4E3009D9B7E /* CategoryType.swift */; };
 		D6FC624C1C7DEDF5009D9B7E /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC624B1C7DEDF5009D9B7E /* MyCollectionViewCell.swift */; };
 		D6FC624F1C7DF05F009D9B7E /* AppDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FC624E1C7DF05F009D9B7E /* AppDetail.swift */; };
+		D6FD03AE1C8489890029BC51 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD03AD1C8489890029BC51 /* ContainerViewController.swift */; };
+		D6FD03B01C848E1A0029BC51 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FD03AF1C848E1A0029BC51 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,11 +73,12 @@
 		D6FC622C1C7DC1AE009D9B7E /* GrabilityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrabilityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6FC62301C7DC1AE009D9B7E /* GrabilityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabilityUITests.swift; sourceTree = "<group>"; };
 		D6FC62321C7DC1AE009D9B7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6FC62411C7DC697009D9B7E /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		D6FC62431C7DCCF8009D9B7E /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = "Service Handler/ServiceManager.swift"; sourceTree = "<group>"; };
 		D6FC62481C7DD4E3009D9B7E /* CategoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 		D6FC624B1C7DEDF5009D9B7E /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		D6FC624E1C7DF05F009D9B7E /* AppDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetail.swift; sourceTree = "<group>"; };
+		D6FD03AD1C8489890029BC51 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		D6FD03AF1C848E1A0029BC51 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +181,8 @@
 				D6FC62451C7DCF23009D9B7E /* Enum */,
 				D6FC623E1C7DC208009D9B7E /* Service */,
 				D6FC620D1C7DC1AD009D9B7E /* AppDelegate.swift */,
-				D6FC62411C7DC697009D9B7E /* PopoverViewController.swift */,
+				D6FD03AD1C8489890029BC51 /* ContainerViewController.swift */,
+				D6FD03AF1C848E1A0029BC51 /* MenuViewController.swift */,
 				D6FC620F1C7DC1AD009D9B7E /* ViewController.swift */,
 				D6ACA3441C8013BE00D34D49 /* AppDetailViewController.swift */,
 				D6FC62111C7DC1AD009D9B7E /* Main.storyboard */,
@@ -380,15 +383,16 @@
 				D6D2C5941C8170E300381E35 /* DatabaseManager.swift in Sources */,
 				D6FC620E1C7DC1AD009D9B7E /* AppDelegate.swift in Sources */,
 				D6ACA34C1C8020DF00D34D49 /* Utils.swift in Sources */,
-				D6FC62421C7DC697009D9B7E /* PopoverViewController.swift in Sources */,
 				D6FC62161C7DC1AD009D9B7E /* Grability.xcdatamodeld in Sources */,
 				D68F6D291C7ECB5900E965A8 /* Parser.swift in Sources */,
 				D6BA5A551C81D9360078CB9C /* DetailImageCell.swift in Sources */,
 				D6FC62441C7DCCF8009D9B7E /* ServiceManager.swift in Sources */,
 				D6ACA3451C8013BE00D34D49 /* AppDetailViewController.swift in Sources */,
 				D6ACA34F1C8046F300D34D49 /* AnimateController.swift in Sources */,
+				D6FD03B01C848E1A0029BC51 /* MenuViewController.swift in Sources */,
 				D6FC624F1C7DF05F009D9B7E /* AppDetail.swift in Sources */,
 				D6ACA3541C80688B00D34D49 /* LoadingOverlayView.swift in Sources */,
+				D6FD03AE1C8489890029BC51 /* ContainerViewController.swift in Sources */,
 				D6FC62491C7DD4E3009D9B7E /* CategoryType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

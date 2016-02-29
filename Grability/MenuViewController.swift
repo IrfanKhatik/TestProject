@@ -1,8 +1,8 @@
 //
-//  PopoverViewController.swift
+//  MenuViewController.swift
 //  Grability
 //
-//  Created by Irfan Khatik on 2/24/16.
+//  Created by Irfan Khatik on 2/29/16.
 //  Copyright © 2016 BestSoft. All rights reserved.
 //
 
@@ -12,20 +12,20 @@ protocol myProtocol {
     func updateForCategory(category:CategoryType) // this function the first controllers
 }
 
-class PopoverViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class MenuViewController: UIViewController {
     @IBOutlet private weak var tblCategory: UITableView!
     
     var delegate: myProtocol?
+    private let isIpad = Utils.runningDeviceIsIpad()
     
     private var categories: [CategoryType]? = [.Books, .Business, .Catalogs,
-                                    .Education, .Entertainment, .Finance,
-                                    .FoodANDDrink, .Games, .HeathANDFitness,
-                                    .Lifestyle, .Medical, .Music,
-                                    .Navigation, .News, .Newsstand,
-                                    .PhotoANDVideo, .Productivity, .Reference,
-                                    .Shopping, .Social_Networking, .Sports,
-                                    .Travel, .Utilities, .Weather]
+        .Education, .Entertainment, .Finance,
+        .FoodANDDrink, .Games, .HeathANDFitness,
+        .Lifestyle, .Medical, .Music,
+        .Navigation, .News, .Newsstand,
+        .PhotoANDVideo, .Productivity, .Reference,
+        .Shopping, .Social_Networking, .Sports,
+        .Travel, .Utilities, .Weather]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,7 @@ class PopoverViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     // MARK: Table protocols
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let categories = categories {
             return categories.count
@@ -60,21 +61,23 @@ class PopoverViewController: UIViewController, UITableViewDataSource, UITableVie
         categoryName = categoryName.stringByReplacingOccurrencesOfString("AND", withString: " & ")
         categoryName = categoryName.stringByReplacingOccurrencesOfString("_", withString: " ")
         cell.textLabel!.text = "\(categoryName)"
-        cell.textLabel!.font = UIFont.boldSystemFontOfSize(13)
+        cell.textLabel!.font = isIpad ? Utils.myFont(CGFloat(20.0)) : Utils.myFont(CGFloat(16.0))
+        cell.textLabel!.textColor = UIColor.greenValidationColor()
+        cell.backgroundColor = UIColor.whiteColor()
         
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 35.0
+        return isIpad ? CGFloat(60.0) : CGFloat(45.0)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedType = categories![indexPath.row]
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            if self.delegate != nil {
-                self.delegate!.updateForCategory(selectedType)
-            }
+        let container : ContainerViewController = self.parentViewController as! ContainerViewController
+        container.hideMenu()
+        if self.delegate != nil {
+            self.delegate!.updateForCategory(selectedType)
         }
     }
 }

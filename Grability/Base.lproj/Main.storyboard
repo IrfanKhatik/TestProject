@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SWy-UL-mya">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1n0-ce-bq5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -81,9 +81,7 @@
                     <navigationItem key="navigationItem" id="FJ3-vz-fsk">
                         <barButtonItem key="leftBarButtonItem" image="Menu" id="Dqh-fq-jum">
                             <connections>
-                                <segue destination="Kl9-Ca-96l" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorBarButtonItem="Dqh-fq-jum" id="kgu-fR-TTt">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <action selector="toggleMenu" destination="BYZ-38-t0r" id="7Eh-ms-hJN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="-612"/>
+            <point key="canvasLocation" x="1706" y="-700"/>
         </scene>
         <!--App Detail View Controller-->
         <scene sceneID="sqA-vP-tx9">
@@ -260,12 +258,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqR-bm-xH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1943" y="-612"/>
+            <point key="canvasLocation" x="2377" y="-700"/>
+        </scene>
+        <!--Container View Controller-->
+        <scene sceneID="Nxc-TT-8Ze">
+            <objects>
+                <viewController id="1n0-ce-bq5" customClass="ContainerViewController" customModule="Grability" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="haL-Im-zTG"/>
+                        <viewControllerLayoutGuide type="bottom" id="3sw-3f-FQK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Bf-Wo-EUr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="y0b-PC-YM5" appends="YES" id="I0f-jQ-eOA"/>
+                            <outletCollection property="gestureRecognizers" destination="3p8-cN-rre" appends="YES" id="9MG-yK-ZUh"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4W-2X-agt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="y0b-PC-YM5">
+                    <connections>
+                        <action selector="swipeRight:" destination="1n0-ce-bq5" id="KE4-1O-z2d"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="3p8-cN-rre">
+                    <connections>
+                        <action selector="swipeLeft:" destination="1n0-ce-bq5" id="07D-ng-L9Z"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="297" y="-968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fMc-0A-M7p">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SWy-UL-mya" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="SWy-UL-mya" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ag2-HT-Q9l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -278,58 +308,66 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZk-7w-B1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="567" y="-617"/>
+            <point key="canvasLocation" x="1001" y="-705"/>
         </scene>
-        <!--Popover View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="rvo-gN-Zre">
             <objects>
-                <viewController id="Kl9-Ca-96l" customClass="PopoverViewController" customModule="Grability" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuViewController" id="Kl9-Ca-96l" customClass="MenuViewController" customModule="Grability" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zNq-LQ-FU6"/>
                         <viewControllerLayoutGuide type="bottom" id="bY0-iu-NFB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aQP-5r-h5B">
-                        <rect key="frame" x="0.0" y="0.0" width="225" height="250"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="35" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="1g9-Q8-H19">
-                                <rect key="frame" x="0.0" y="0.0" width="225" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="45" width="600" height="555"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CategoryCell" id="Qam-kg-9q9">
-                                        <rect key="frame" x="0.0" y="28" width="225" height="35"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qam-kg-9q9" id="8sI-Xd-obn">
-                                            <rect key="frame" x="0.0" y="0.0" width="225" height="35"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="Kl9-Ca-96l" id="DAk-QC-64F"/>
-                                    <outlet property="delegate" destination="Kl9-Ca-96l" id="QnM-cu-mlc"/>
+                                    <outlet property="dataSource" destination="Kl9-Ca-96l" id="KAS-qF-qu6"/>
+                                    <outlet property="delegate" destination="Kl9-Ca-96l" id="OnL-bw-nzd"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkM-Qb-FN0">
+                                <rect key="frame" x="20" y="11" width="560" height="26"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1g9-Q8-H19" firstAttribute="leading" secondItem="aQP-5r-h5B" secondAttribute="leading" id="5Ma-Is-bAc"/>
-                            <constraint firstItem="1g9-Q8-H19" firstAttribute="top" secondItem="zNq-LQ-FU6" secondAttribute="bottom" id="F2F-f6-wWc"/>
-                            <constraint firstItem="bY0-iu-NFB" firstAttribute="top" secondItem="1g9-Q8-H19" secondAttribute="bottom" id="J9v-8y-mqx"/>
-                            <constraint firstAttribute="trailing" secondItem="1g9-Q8-H19" secondAttribute="trailing" id="v9d-bA-vF7"/>
+                            <constraint firstAttribute="trailing" secondItem="1g9-Q8-H19" secondAttribute="trailing" id="0dN-Zw-Xtu"/>
+                            <constraint firstAttribute="trailing" secondItem="OkM-Qb-FN0" secondAttribute="trailing" constant="20" id="Egd-al-FmJ"/>
+                            <constraint firstItem="OkM-Qb-FN0" firstAttribute="leading" secondItem="aQP-5r-h5B" secondAttribute="leading" constant="20" id="Nt1-Xj-N5S"/>
+                            <constraint firstItem="1g9-Q8-H19" firstAttribute="leading" secondItem="aQP-5r-h5B" secondAttribute="leading" id="T7N-VJ-PVV"/>
+                            <constraint firstItem="1g9-Q8-H19" firstAttribute="top" secondItem="OkM-Qb-FN0" secondAttribute="bottom" constant="8" id="ab3-q9-8Js"/>
+                            <constraint firstItem="bY0-iu-NFB" firstAttribute="top" secondItem="1g9-Q8-H19" secondAttribute="bottom" id="ciE-rx-vai"/>
+                            <constraint firstItem="OkM-Qb-FN0" firstAttribute="top" secondItem="zNq-LQ-FU6" secondAttribute="bottom" constant="11" id="wts-h3-Nc6"/>
                         </constraints>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="150" height="300"/>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="225" height="250"/>
                     <connections>
-                        <outlet property="tblCategory" destination="1g9-Q8-H19" id="qaj-ef-7gA"/>
+                        <outlet property="tblCategory" destination="1g9-Q8-H19" id="2Pc-yF-cCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Baq-PB-WBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="841" y="4"/>
+            <point key="canvasLocation" x="1001" y="-1438"/>
         </scene>
     </scenes>
     <resources>

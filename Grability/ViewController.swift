@@ -8,14 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, myProtocol {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, myProtocol {
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    private var popoverViewController: PopoverViewController?
     
     private var selectedApp : AppDetail!
     
-    private let popoverSegueIdentifier = "popoverSegue"
     private let detailSegueIdentifier = "detailSegue"
     
     private let transition = AnimateController()
@@ -82,27 +80,18 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == popoverSegueIdentifier {
-            popoverViewController = (segue.destinationViewController as! PopoverViewController)
-            if #available(iOS 8.0, *) {
-                popoverViewController!.modalPresentationStyle = .Popover
-                popoverViewController!.popoverPresentationController!.delegate = self
-            } else {
-                // Fallback on earlier versions
-                let popover = UIPopoverController(contentViewController: popoverViewController!)
-                popover.popoverContentSize = CGSizeMake(225, 250);
-                popover.presentPopoverFromRect(CGRectMake(20, 60, 1, 1), inView: self.view , permittedArrowDirections: .Down, animated: true)
-            }
-            
-            popoverViewController!.delegate = self
-        }
-        
         if segue.identifier == detailSegueIdentifier {
             
             let detailViewController = segue.destinationViewController as! AppDetailViewController
             detailViewController.transitioningDelegate = self;
             detailViewController.selectedApp = selectedApp
         }
+    }
+    
+    // MARK: Toggle Menu
+    @IBAction func toggleMenu(){
+        let container : ContainerViewController = self.navigationController!.parentViewController as! ContainerViewController
+        container.menuShown ? container.hideMenu() : container.showMenu()
     }
     
     // MARK: Display Error
@@ -120,13 +109,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         } else {
             UIAlertView(title: "Grability", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
         }
-    }
-    
-    // MARK: Popover presentation protocol
-    
-    @available(iOS 8.0, *)
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
     }
     
     // MARK: CollectionView protocols
@@ -154,7 +136,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         }
         
         cell.label?.text = appDetail.appName
-        cell.label.font = isIpad ? Utils.myFont(CGFloat(20.0)) : Utils.myFont(CGFloat(15.0))
+        cell.label.font = isIpad ? Utils.myFont(CGFloat(20.0)) : Utils.myFont(CGFloat(16.0))
         
         guard let checkedUrl = NSURL(string: appDetail.appImage) else {
             return cell
@@ -167,6 +149,10 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
+        let container : ContainerViewController = self.navigationController!.parentViewController as! ContainerViewController
+        if container.menuShown {
+            container.hideMenu()
+        }
         guard
             let appList = appList, appDetail = appList[indexPath.row] as? AppDetail else{
                 return
