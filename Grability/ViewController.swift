@@ -89,9 +89,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 popoverViewController!.popoverPresentationController!.delegate = self
             } else {
                 // Fallback on earlier versions
-                popoverViewController!.modalPresentationStyle = .Custom
-                popoverViewController?.modalTransitionStyle = .CrossDissolve
-                popoverViewController?.view.frame = CGRectMake(20, 64, 225, 250)
+                let popover = UIPopoverController(contentViewController: popoverViewController!)
+                popover.popoverContentSize = CGSizeMake(225, 250);
+                popover.presentPopoverFromRect(CGRectMake(20, 60, 1, 1), inView: self.view , permittedArrowDirections: .Down, animated: true)
             }
             
             popoverViewController!.delegate = self

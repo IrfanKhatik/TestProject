@@ -131,6 +131,7 @@
                                                             <items>
                                                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="hBA-N0-8lf"/>
                                                                 <barButtonItem systemItem="action" id="I6Z-Kl-Yia">
+                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <connections>
                                                                         <action selector="showAppMenu:" destination="e1R-ah-Ti4" id="1WW-WU-xqb"/>
                                                                     </connections>

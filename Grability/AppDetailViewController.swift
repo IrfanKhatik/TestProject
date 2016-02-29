@@ -100,7 +100,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             }
         } else {
             //
-            let actionSheet: UIActionSheet = UIActionSheet(title: "Grability", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Share on Twitter", "Share on Facebook")
+            let actionSheet: UIActionSheet = UIActionSheet(title: "Grability", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Copy Link", "Share on Twitter", "Share on Facebook")
             actionSheet.showInView(self.view)
         }
         
@@ -248,18 +248,24 @@ extension AppDetailViewController : UIActionSheetDelegate {
         print("ButtonIndex: \(buttonIndex)")
         switch (buttonIndex) {
         case 0:
+            print("Copy Link")
+            guard let checkedUrl = NSURL(string: self.selectedApp.appLink) else {
+                return
+            }
+            UIPasteboard.generalPasteboard().URL = checkedUrl
+        case 1:
             print("Twitter")
             let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             vc.setInitialText("Look at this App!")
             vc.addURL(NSURL(string: self.selectedApp.appLink))
             self.presentViewController(vc, animated: true, completion: nil)
-        case 1:
+        case 2:
             print("Facebook");
             let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             vc.setInitialText("Look at this App!")
             vc.addURL(NSURL(string: self.selectedApp.appLink))
             self.presentViewController(vc, animated: true, completion: nil)
-        case 2:
+        case 3:
             print("Cancel");
         default:
             break;
