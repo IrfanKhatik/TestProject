@@ -99,16 +99,19 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     // MARK: Display Error
     private func displayError(error: NSError) {
-        
-        let alert = UIAlertController(title: "Grability",
-                                    message: error.localizedDescription,
-                             preferredStyle: .Alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: .Cancel) { (alert: UIAlertAction) in
+        if #available(iOS 8, *){
+            let alert = UIAlertController(title: "Grability",
+                message: error.localizedDescription,
+                preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: .Cancel) { (alert: UIAlertAction) in
+            }
+            alert.addAction(okAction)
+            
+            presentViewController(alert, animated: true, completion: nil)
+        } else {
+            UIAlertView(title: "Grability", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "Ok").show()
         }
-        alert.addAction(okAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
     }
     
     // MARK: Popover presentation protocol

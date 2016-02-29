@@ -126,9 +126,8 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="800" height="0.0"/>
                                                     </variation>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJ9-Yk-6Cu">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJ9-Yk-6Cu">
                                                     <rect key="frame" x="525" y="115" width="70" height="30"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="QMx-pU-KX3"/>
                                                         <constraint firstAttribute="height" constant="30" id="aR8-ni-RhD"/>

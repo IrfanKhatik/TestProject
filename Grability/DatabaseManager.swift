@@ -112,6 +112,9 @@ public class DatabaseManager: NSObject {
                         appList.append(appDetail)
                     }
                 }
+                appList.sortInPlace { (element1, element2) -> Bool in
+                    return element1.appId < element2.appId
+                }
             } else {
                 print("Could not fetch result")
             }
@@ -123,6 +126,10 @@ public class DatabaseManager: NSObject {
     }
     
     func saveAppDetails(appList: Array<AppDetail>, forCategory: CategoryType){
+        
+        if appList.count == 0 {
+            return
+        }
         
         let managedContext = self.managedObjectContext
         
@@ -179,10 +186,10 @@ public class DatabaseManager: NSObject {
         let fileManager = NSFileManager.defaultManager()
         if fileManager.fileExistsAtPath(tmpPath)
         {
-            do{
+            do {
                 try fileManager.removeItemAtPath(tmpPath)
-            }catch let error as NSError
-            {
+            }
+            catch let error as NSError {
                 print("File remove error: \(error.localizedDescription)")
             }
         }

@@ -19,6 +19,7 @@ public class ServiceManager: NSURLSession {
     }
     
     func baseURL() -> String {
+        //https://itunes.apple.com/us/rss/topfreeapplications/limit=10/xml
         return "https://itunes.apple.com/us/rss/topfreeapplications/limit=20/"
     }
     
@@ -32,17 +33,16 @@ public class ServiceManager: NSURLSession {
     {
         let genreVal:Int = evaluate(genre)
         
-        //https://itunes.apple.com/us/rss/topfreeapplications/limit=10/xml
-        
-        var urlString:String? = self.baseURL()
+        var urlString:String = self.baseURL()
         
         if genreVal > 0 {
-            urlString! += "genre=\(genreVal)/json"
+            urlString += "genre=\(genreVal)/json"
         } else {
-            urlString! += "json"
+            urlString += "json"
         }
         
-        let url:NSURL = NSURL(string: urlString!)!
+        let url:NSURL = NSURL(string: urlString)!
+        
         let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest(URL: url)
@@ -50,7 +50,7 @@ public class ServiceManager: NSURLSession {
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         let task = session.dataTaskWithRequest(request) {
-            (let data, let response, let error) in
+            (var data, let response, let error) in
                 guard
                     let _:NSData = data,
                     let _:NSURLResponse = response  where error == nil else
@@ -60,24 +60,23 @@ public class ServiceManager: NSURLSession {
                     return
                 }
             
+                data! = NSData()
+            
                 do {
-                    if data!.length == 0 {
-                        throw ParseError.Empty
-                    }
-                    guard let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject] else{
+                    guard let json = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? [String:AnyObject] else {
                         throw ParseError.Dirty
                     }
                     guard let feed = json["feed"] as? [String:AnyObject] else
                     {
                         throw ParseError.Short
                     }
-                    guard let entry:NSArray! = feed["entry"] as? NSArray else
+                    guard let entry:NSArray! = feed["entry"] as? NSArray where entry!.count != 0 else
                     {
                         throw ParseError.Short
                     }
                     
-                    Parser.parseJsonListToAppDetailModelList(genre, responseList: entry!, withCompletion: { (appList, error) -> Void in
-                        completion(appList, error)
+                    Parser.parseJsonListToAppDetailModelList(genre, responseList: entry!, withCompletion: { (appList) -> Void in
+                        completion(appList, nil)
                     })
                 }
                 catch let error as NSError

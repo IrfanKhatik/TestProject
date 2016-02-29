@@ -52,8 +52,7 @@ class PopoverViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath) as UITableViewCell
         
-        guard let categories = categories, category = categories[indexPath.row] as? CategoryType else
-        {
+        guard let categories = categories, category = categories[indexPath.row] as? CategoryType else {
             return cell;
         }
         

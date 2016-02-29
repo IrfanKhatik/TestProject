@@ -47,55 +47,62 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction private func showAppMenu(sender:UIButton) {
         
-        let actionSheetController = UIAlertController(title: selectedApp.appName, message: "What do you want to do?", preferredStyle: .ActionSheet)
-        
-        //Create and add the Cancel action
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
-            //Just dismiss the action sheet
-        }
-        actionSheetController.addAction(cancelAction)
-        
-        //Create and add a first option action
-        let copyLinkAction: UIAlertAction = UIAlertAction(title: "Copy Link", style: .Default) { action -> Void in
-            //Code for copy link goes here
-            guard let checkedUrl = NSURL(string: self.selectedApp.appLink) else {
-                return
+        if #available(iOS 8, *) {
+            let actionSheetController = UIAlertController(title: selectedApp.appName, message: "What do you want to do?", preferredStyle: .ActionSheet)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                //Just dismiss the action sheet
             }
-            UIPasteboard.generalPasteboard().URL = checkedUrl
-        }
-        
-        actionSheetController.addAction(copyLinkAction)
-        
-        //Create and add second option action
-        let twitterAction: UIAlertAction = UIAlertAction(title: "Share on Twitter", style: .Default) { action -> Void in
-            //Code for twitter share goes here
-            let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            vc.setInitialText("Look at this App!")
-            vc.addURL(NSURL(string: self.selectedApp.appLink))
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
-        actionSheetController.addAction(twitterAction)
-        
-        //Create and add a third option action
-        let facebookAction: UIAlertAction = UIAlertAction(title: "Share on Facebook", style: .Default) { action -> Void in
-            //Code for facebook share goes here
-            let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            vc.setInitialText("Look at this App!")
-            vc.addURL(NSURL(string: self.selectedApp.appLink))
-            self.presentViewController(vc, animated: true, completion: nil)
-        }
-        actionSheetController.addAction(facebookAction)
-        
-        //Present the AlertController
-        if isIpad == true {
-            actionSheetController.modalPresentationStyle = .Popover
-            let popPresenter = actionSheetController.popoverPresentationController
-            popPresenter?.sourceView = sender;
-            popPresenter?.sourceRect = sender.bounds
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            actionSheetController.addAction(cancelAction)
+            
+            //Create and add a first option action
+            let copyLinkAction: UIAlertAction = UIAlertAction(title: "Copy Link", style: .Default) { action -> Void in
+                //Code for copy link goes here
+                guard let checkedUrl = NSURL(string: self.selectedApp.appLink) else {
+                    return
+                }
+                UIPasteboard.generalPasteboard().URL = checkedUrl
+            }
+            
+            actionSheetController.addAction(copyLinkAction)
+            
+            //Create and add second option action
+            let twitterAction: UIAlertAction = UIAlertAction(title: "Share on Twitter", style: .Default) { action -> Void in
+                //Code for twitter share goes here
+                let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                vc.setInitialText("Look at this App!")
+                vc.addURL(NSURL(string: self.selectedApp.appLink))
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+            actionSheetController.addAction(twitterAction)
+            
+            //Create and add a third option action
+            let facebookAction: UIAlertAction = UIAlertAction(title: "Share on Facebook", style: .Default) { action -> Void in
+                //Code for facebook share goes here
+                let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                vc.setInitialText("Look at this App!")
+                vc.addURL(NSURL(string: self.selectedApp.appLink))
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+            actionSheetController.addAction(facebookAction)
+            
+            //Present the AlertController
+            if isIpad == true {
+                actionSheetController.modalPresentationStyle = .Popover
+                let popPresenter = actionSheetController.popoverPresentationController
+                popPresenter?.sourceView = sender;
+                popPresenter?.sourceRect = sender.bounds
+                self.presentViewController(actionSheetController, animated: true, completion: nil)
+            } else {
+                self.presentViewController(actionSheetController, animated: true, completion: nil)
+            }
         } else {
-            self.presentViewController(actionSheetController, animated: true, completion: nil)
+            //
+            let actionSheet: UIActionSheet = UIActionSheet(title: "Grability", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Share on Twitter", "Share on Facebook")
+            actionSheet.showInView(self.view)
         }
+        
     }
     
     // MARK: TableView Protocols
@@ -232,3 +239,29 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     }
 }
 
+@available(iOS 7, *)
+extension AppDetailViewController : UIActionSheetDelegate {
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        print("ButtonIndex: \(buttonIndex)")
+        switch (buttonIndex) {
+        case 0:
+            print("Twitter")
+            let vc = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            vc.setInitialText("Look at this App!")
+            vc.addURL(NSURL(string: self.selectedApp.appLink))
+            self.presentViewController(vc, animated: true, completion: nil)
+        case 1:
+            print("Facebook");
+            let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            vc.setInitialText("Look at this App!")
+            vc.addURL(NSURL(string: self.selectedApp.appLink))
+            self.presentViewController(vc, animated: true, completion: nil)
+        case 2:
+            print("Cancel");
+        default:
+            break;
+        }
+    }
+}
