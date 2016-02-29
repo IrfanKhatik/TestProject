@@ -50,7 +50,7 @@ public class ServiceManager: NSURLSession {
         request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
         
         let task = session.dataTaskWithRequest(request) {
-            (var data, let response, let error) in
+            (let data, let response, let error) in
                 guard
                     let _:NSData = data,
                     let _:NSURLResponse = response  where error == nil else

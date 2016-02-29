@@ -84,8 +84,16 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         
         if segue.identifier == popoverSegueIdentifier {
             popoverViewController = (segue.destinationViewController as! PopoverViewController)
-            popoverViewController!.modalPresentationStyle = UIModalPresentationStyle.Popover
-            popoverViewController!.popoverPresentationController!.delegate = self
+            if #available(iOS 8.0, *) {
+                popoverViewController!.modalPresentationStyle = .Popover
+                popoverViewController!.popoverPresentationController!.delegate = self
+            } else {
+                // Fallback on earlier versions
+                popoverViewController!.modalPresentationStyle = .Custom
+                popoverViewController?.modalTransitionStyle = .CrossDissolve
+                popoverViewController?.view.frame = CGRectMake(20, 64, 225, 250)
+            }
+            
             popoverViewController!.delegate = self
         }
         
@@ -116,6 +124,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     // MARK: Popover presentation protocol
     
+    @available(iOS 8.0, *)
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
@@ -157,6 +166,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
         guard
             let appList = appList, appDetail = appList[indexPath.row] as? AppDetail else{
                 return
@@ -198,6 +208,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 // MARK: UIViewController Transitioning Delegate
 
 extension ViewController: UIViewControllerTransitioningDelegate {
+    
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         transition.originFrame = selectedImage!.superview!.convertRect(selectedImage!.frame, toView: nil)

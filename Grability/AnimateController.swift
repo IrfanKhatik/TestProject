@@ -21,8 +21,14 @@ class AnimateController: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         
         let containerView = transitionContext.containerView()!
+        var toView : UIView
         
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        if #available(iOS 8.0, *) {
+            toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
+        } else {
+            // Fallback on earlier versions
+            toView = (transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)?.view)!
+        }
         
         let herbView = toView
         

@@ -45,7 +45,7 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction private func showAppMenu(sender:UIButton) {
+    @IBAction private func showAppMenu(sender:UIBarButtonItem) {
         
         if #available(iOS 8, *) {
             let actionSheetController = UIAlertController(title: selectedApp.appName, message: "What do you want to do?", preferredStyle: .ActionSheet)
@@ -91,9 +91,10 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
             if isIpad == true {
                 actionSheetController.modalPresentationStyle = .Popover
                 let popPresenter = actionSheetController.popoverPresentationController
-                popPresenter?.sourceView = sender;
-                popPresenter?.sourceRect = sender.bounds
+                popPresenter?.sourceView = self.view;
+                popPresenter?.barButtonItem = sender
                 self.presentViewController(actionSheetController, animated: true, completion: nil)
+                
             } else {
                 self.presentViewController(actionSheetController, animated: true, completion: nil)
             }

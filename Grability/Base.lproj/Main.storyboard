@@ -121,25 +121,34 @@
                                             <subviews>
                                                 <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTu-Ck-ioq">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                                    <subviews>
+                                                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKH-nt-ylV">
+                                                            <rect key="frame" x="0.0" y="106" width="600" height="44"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="44" id="YWo-kz-dGT"/>
+                                                            </constraints>
+                                                            <items>
+                                                                <barButtonItem style="plain" systemItem="flexibleSpace" id="hBA-N0-8lf"/>
+                                                                <barButtonItem systemItem="action" id="I6Z-Kl-Yia">
+                                                                    <connections>
+                                                                        <action selector="showAppMenu:" destination="e1R-ah-Ti4" id="1WW-WU-xqb"/>
+                                                                    </connections>
+                                                                </barButtonItem>
+                                                            </items>
+                                                            <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </toolbar>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="DKH-nt-ylV" secondAttribute="bottom" id="4Pz-OW-kcy"/>
+                                                        <constraint firstItem="DKH-nt-ylV" firstAttribute="leading" secondItem="PTu-Ck-ioq" secondAttribute="leading" id="XZx-Pg-UU9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="DKH-nt-ylV" secondAttribute="trailing" id="pMY-O1-5n0"/>
+                                                    </constraints>
                                                     <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
                                                         <rect key="frame" x="0.0" y="0.0" width="800" height="0.0"/>
                                                     </variation>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJ9-Yk-6Cu">
-                                                    <rect key="frame" x="525" y="115" width="70" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="QMx-pU-KX3"/>
-                                                        <constraint firstAttribute="height" constant="30" id="aR8-ni-RhD"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Share"/>
-                                                    <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                                        <rect key="frame" x="725" y="-35" width="70" height="30"/>
-                                                    </variation>
-                                                    <connections>
-                                                        <action selector="showAppMenu:" destination="e1R-ah-Ti4" eventType="touchUpInside" id="26J-6k-vOu"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-XW-zCF">
                                                     <rect key="frame" x="250" y="25" width="100" height="100"/>
                                                     <constraints>
@@ -174,25 +183,21 @@
                                             <constraints>
                                                 <constraint firstItem="J9V-XW-zCF" firstAttribute="centerX" secondItem="6tB-9s-LbQ" secondAttribute="centerX" id="7Eg-8y-ZGD"/>
                                                 <constraint firstItem="J9V-XW-zCF" firstAttribute="top" secondItem="6tB-9s-LbQ" secondAttribute="top" constant="25" id="A2j-rt-DQI"/>
-                                                <constraint firstAttribute="bottom" secondItem="pJ9-Yk-6Cu" secondAttribute="bottom" constant="5" id="Cse-1X-bCM"/>
-                                                <constraint firstAttribute="bottom" secondItem="J9V-XW-zCF" secondAttribute="bottom" constant="25" id="RC3-zV-60B"/>
                                                 <constraint firstAttribute="bottom" secondItem="PTu-Ck-ioq" secondAttribute="bottom" id="Zjc-Dk-XOU"/>
-                                                <constraint firstItem="PTu-Ck-ioq" firstAttribute="top" secondItem="pJ9-Yk-6Cu" secondAttribute="bottom" constant="5" id="hUP-j9-R7X"/>
                                                 <constraint firstItem="PTu-Ck-ioq" firstAttribute="leading" secondItem="6tB-9s-LbQ" secondAttribute="leading" id="lH2-Me-LmV"/>
-                                                <constraint firstAttribute="trailing" secondItem="pJ9-Yk-6Cu" secondAttribute="trailing" constant="5" id="lfc-6w-2Zz"/>
                                                 <constraint firstItem="J9V-XW-zCF" firstAttribute="top" secondItem="PTu-Ck-ioq" secondAttribute="bottom" constant="25" id="mLe-KR-CyK"/>
+                                                <constraint firstAttribute="bottom" secondItem="J9V-XW-zCF" secondAttribute="bottom" constant="25" id="pwb-B9-uvl"/>
                                                 <constraint firstItem="PTu-Ck-ioq" firstAttribute="top" secondItem="6tB-9s-LbQ" secondAttribute="top" id="rQI-jL-ges"/>
                                                 <constraint firstAttribute="trailing" secondItem="PTu-Ck-ioq" secondAttribute="trailing" id="t4e-Fa-coU"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="hUP-j9-R7X"/>
                                                     <exclude reference="mLe-KR-CyK"/>
                                                 </mask>
                                             </variation>
-                                            <variation key="heightClass=regular-widthClass=regular">
+                                            <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="800" height="150"/>
                                                 <mask key="constraints">
-                                                    <include reference="hUP-j9-R7X"/>
                                                     <include reference="mLe-KR-CyK"/>
                                                 </mask>
                                             </variation>
