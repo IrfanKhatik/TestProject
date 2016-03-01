@@ -151,6 +151,8 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-XW-zCF">
                                                     <rect key="frame" x="250" y="25" width="100" height="100"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="Na2-fD-TpV"/>
+                                                        <constraint firstAttribute="height" constant="100" id="Rll-gZ-LG7"/>
                                                         <constraint firstAttribute="height" constant="200" id="bwm-zi-yf3"/>
                                                         <constraint firstAttribute="width" constant="100" id="lhe-Bu-WCB"/>
                                                         <constraint firstAttribute="width" constant="200" id="m62-1K-aDp"/>
@@ -158,10 +160,18 @@
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
+                                                            <exclude reference="Na2-fD-TpV"/>
+                                                            <exclude reference="Rll-gZ-LG7"/>
                                                             <exclude reference="bwm-zi-yf3"/>
                                                             <exclude reference="lhe-Bu-WCB"/>
                                                             <exclude reference="m62-1K-aDp"/>
                                                             <exclude reference="tPt-9B-KQa"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="Na2-fD-TpV"/>
+                                                            <include reference="Rll-gZ-LG7"/>
                                                         </mask>
                                                     </variation>
                                                     <variation key="heightClass=regular-widthClass=compact">

@@ -21,10 +21,12 @@ class ContainerViewController: UIViewController {
         
         let menuViewController: MenuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController")as! MenuViewController
         
-        menuViewController.delegate = mainNavigationController.viewControllers[0] as! ViewController
+        let mainVC : ViewController = mainNavigationController.viewControllers[0] as! ViewController
+        menuViewController.delegate = mainVC
         
         self.leftViewController = menuViewController
         self.mainViewController = mainNavigationController
+        
     }
     
     var leftViewController: UIViewController? {
@@ -55,7 +57,6 @@ class ContainerViewController: UIViewController {
         }
         
         didSet{
-            
             self.view!.addSubview(self.mainViewController!.view)
             self.addChildViewController(self.mainViewController!)
         }

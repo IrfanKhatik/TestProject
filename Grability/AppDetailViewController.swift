@@ -12,7 +12,6 @@ import Social
 class AppDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var selectedApp: AppDetail!
-    
     @IBOutlet private weak var tblAppDetail: UITableView!
     private let screenSize = Utils.screenSize()
     private let isIpad = Utils.runningDeviceIsIpad()
@@ -22,13 +21,16 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
         // Do any additional setup after loading the view, typically from a nib.
         //self.collectionView.registerClass(MyCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.title = selectedApp.appName
-        tblAppDetail.estimatedRowHeight = CGFloat(44.0)
+        tblAppDetail.estimatedRowHeight = self.isIpad ? CGFloat(250.0) : CGFloat(150.0)
         tblAppDetail.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         tblAppDetail.reloadData()
     }
     
@@ -144,9 +146,9 @@ class AppDetailViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row{
         case 0:
-            return isIpad ? CGFloat(250.0) : CGFloat(150.0)
+            return self.isIpad ? CGFloat(250.0) : CGFloat(150.0)
         default:
-            return isIpad ? CGFloat(60.0) :CGFloat(44.0)
+            return self.isIpad ? CGFloat(60.0) :CGFloat(44.0)
         }
     }
     
